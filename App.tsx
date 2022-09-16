@@ -74,6 +74,9 @@ const App: React.FunctionComponent<PropsWithChildren<{}>> = () => {
   const _onLogout = async () => {
     try {
       await auth0.webAuth.clearSession({});
+      setAuthStatus('unauthorized');
+      setCredentials(undefined);
+      setUserInfo(undefined);
       await AsyncStorage.removeItem('CREDENTIAL');
     } catch (err) {
       console.log(err);
